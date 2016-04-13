@@ -9,6 +9,7 @@ and avoid having to remember the SCP/RSYNC command format.
 *NOTE: sudo is required as it installs the script in the /bin folder*
 
 `git clone https://github.com/mrMuffins/lp .`
+
 `sudo ./lp/install `
 
 ##Usage
