@@ -8,7 +8,9 @@ and avoid having to remember the SCP/RSYNC command format.
 
 ##Features
 -Pull down all files with a .log extension in a common directory
+
 -Compress them for quick downloading
+
 -Archive
 
 
