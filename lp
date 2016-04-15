@@ -58,11 +58,11 @@ function SETPATH {
 
 function LOGPULL {
   ssh $user@$host << ENDHERE
-    cd $mainlogpath
-    mkdir $ticketnumber
-    cp *.log $ticketnumber/
-    tar -cvzf $ticketnumber.tar.gz $ticketnumber
-    exit
+cd $mainlogpath
+mkdir $ticketnumber
+cp *.log $ticketnumber/
+tar -cvzf $ticketnumber.tar.gz $ticketnumber
+exit
 ENDHERE  #whitespace matters -__-
 
   #scp pulls down the archive locally then tar extracts the files
