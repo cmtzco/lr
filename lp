@@ -14,9 +14,9 @@ pathtosearch=$4   #DO NOT EDIT
 ##############################################################
 
 
-mainlogpath=/path/to/remote/logs             #This is the path that the script will search the host for
-locallogpath=/path/to/local/logs      #Path to the logs on the local machine running the script
-processedlogpath=/path/to/logs        #Path to move all the zipped up archives to prevent clutter
+mainlogpath=[/path/to/remote/logs]             #This is the path that the script will search the host for
+locallogpath=[/path/to/local/logs]      #Path to the logs on the local machine running the script
+processedlogpath=[/path/to/logs]        #Path to move all the zipped up archives to prevent clutter
 
 
 ##############################################################
@@ -63,7 +63,7 @@ function LOGPULL {
     cp *.log $ticketnumber/
     tar -cvzf $ticketnumber.tar.gz $ticketnumber
     exit
-ENDHERE
+ENDHERE  #whitespace matters -__-
 
   #scp pulls down the archive locally then tar extracts the files
   scp $user@$host:$logz $locallogpath

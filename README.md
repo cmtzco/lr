@@ -12,7 +12,11 @@ and avoid having to remember the SCP/RSYNC command format.
 
 *NOTE: You will want to edit the `lp` file inside the `lp` directory before you do the install script to make sure that you specify the base directories.  Currently `install` is being worked on to ensure that this can be configured via the script* 
 
-`sudo ./lp/install `
+`sudo ./lp/install [remote log path] [local log path] [processed log path]` *Specify the paths in the command*
+
+or
+
+`sudo ./lp/install` *Be sure to edit the `lp` file if you do not include the log paths in the command*
 
 ##Usage
 > lp username hostname ticketnumber

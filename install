@@ -8,15 +8,30 @@ RED='\033[0;31m'
 NC='\033[0m'
 GREEN='\033[0;32m'
 
-cp lp/lp /bin/
-if [ $? == 1 ]; then
-  echo ""
-  echo -e "${RED}Please run this script as sudo${NC}"
-  echo ""
-  exit
+remotepath=$1
+localpath=$2
+processedpath=$3
+
+function INSTALL {
+	cp lp/lp /bin/
+	if [ $? == 1 ]; then
+	  echo ""
+	  echo -e "${RED}Please run this script as sudo${NC}"
+	  echo ""
+	  exit
+	fi
+	echo ""
+	echo -e "${GREEN}lp has been installed${NC}"
+	echo "Usage:"
+	echo -e "\t lp [user] [host] [ticket]"
+	echo ""	
+}
+
+if [ $# -gt 1 ]; then
+	sed -i -e "s/\[\/path\/to\/remote\/logs\]/$remotepath/g" lp/lp
+	sed -i -e "s/\[\/path\/to\/local\/logs\]/$localpath/g" lp/lp
+	sed -i -e "s/\[\/path\/to\/logs\]/$processedpath/g" lp/lp
+	INSTALL
+else	
+	INSTALL
 fi
-echo ""
-echo -e "${GREEN}lp has been installed${NC}"
-echo "Usage:"
-echo -e "\t lp [user] [host] [ticket]"
-echo ""	
