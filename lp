@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #define user host and ticket number
-user=$1
-host=$2
-ticketnumber=$3
-pathtosearch=$4
+user=$1           #DO NOT EDIT
+host=$2           #DO NOT EDIT
+ticketnumber=$3   #DO NOT EDIT
+pathtosearch=$4   #DO NOT EDIT
 
 
 ##############################################################
@@ -56,23 +56,23 @@ function SETPATH () {
   fi
 }
 
-function LOGPULL () {
-    ssh $user@$host << ENDHERE
-      cd $mainlogpath
-      mkdir $ticketnumber
-      cp *.log $ticketnumber/
-      tar -cvzf $ticketnumber.tar.gz $ticketnumber
-      exit
-    ENDHERE
+function LOGPULL {
+  ssh $user@$host << ENDHERE
+    cd $mainlogpath
+    mkdir $ticketnumber
+    cp *.log $ticketnumber/
+    tar -cvzf $ticketnumber.tar.gz $ticketnumber
+    exit 
+  ENDHERE
 
-    #scp pulls down the archive locally then tar extracts the files
-    scp $user@$host:$logz $locallogpath
-    tar -xzvf $locallogpath/$ticketnumber.tar.gz -C $locallogpath
-    #find $locallogpath/$ticketnumber -type f -print0 | xargs -0r gzip  ##MAY BE USED WHEN LOGSTASH ALLOWS gzipped logs not coming from file beat
+  #scp pulls down the archive locally then tar extracts the files
+  scp $user@$host:$logz $locallogpath
+  tar -xzvf $locallogpath/$ticketnumber.tar.gz -C $locallogpath
+  #find $locallogpath/$ticketnumber -type f -print0 | xargs -0r gzip  ##MAY BE USED WHEN LOGSTASH ALLOWS gzipped logs not coming from file beat
 
-    #compressed archives get moved to a processed
-    #folder after logs are extracted
-    mv $locallogpath/*.tar.gz $processedlogpath
+  #compressed archives get moved to a processed
+  #folder after logs are extracted
+  mv $locallogpath/*.tar.gz $processedlogpath
 }
 # Check that all three parameteres have been passed in. 
 if [ ! $# -ge 3 ]; then
@@ -84,15 +84,3 @@ if [ -z ${pathtosearch} ]; then
 else
   SETPATH $pathtosearch
 fi
-
-
-##############################################################
-## ssh into the host with specified user and stdin           #
-## with the commands I will be running on the remote host    #
-## this includes changing directory to the main log path     #
-## creating the path for the specified ticket number         #
-## as well as copying all the .log files into the folder     #
-## that was just created.   After all of that is completed   #
-## an archive is created to make it easy to scp down         #
-##############################################################
-
