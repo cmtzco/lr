@@ -28,9 +28,9 @@ function INSTALL {
 }
 
 if [ $# -gt 1 ]; then
-	sed -i -e "s/\[\/path\/to\/remote\/logs\]/$remotepath/g" lp/lp
-	sed -i -e "s/\[\/path\/to\/local\/logs\]/$localpath/g" lp/lp
-	sed -i -e "s/\[\/path\/to\/logs\]/$processedpath/g" lp/lp
+	sed -i -e "s@\[\/path\/to\/remote\/logs\]@$remotepath@g" lp/lp
+	sed -i -e "s@\[\/path\/to\/local\/logs\]@$localpath@g" lp/lp
+	sed -i -e "s@\[\/path\/to\/logs\]@$processedpath@g" lp/lp
 	INSTALL
 else	
 	INSTALL
