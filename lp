@@ -39,7 +39,7 @@ function HELP {
   exit
 }
 
-function SETPATH () {
+function SETPATH {
   if [ -z ${1} ]; then
     #define the path to the zipped up logs
     logz="$mainlogpath/$ticketnumber.tar.gz"   # DO NOT CHANGE
@@ -62,8 +62,8 @@ function LOGPULL {
     mkdir $ticketnumber
     cp *.log $ticketnumber/
     tar -cvzf $ticketnumber.tar.gz $ticketnumber
-    exit 
-  ENDHERE
+    exit
+ENDHERE
 
   #scp pulls down the archive locally then tar extracts the files
   scp $user@$host:$logz $locallogpath
