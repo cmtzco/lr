@@ -28,6 +28,8 @@ or
 
 -Archive
 
+-Specify directories to search/use when running the installer
+
 
 ##TODO
 - [] Specify the extension of the files to look for.

@@ -5,7 +5,7 @@ user=$1           #DO NOT EDIT
 host=$2           #DO NOT EDIT
 ticketnumber=$3   #DO NOT EDIT
 pathtosearch=$4   #DO NOT EDIT
-
+extension=$5      #DO NOT EDIT
 
 ##############################################################
 ##                                                          ##
@@ -14,7 +14,7 @@ pathtosearch=$4   #DO NOT EDIT
 ##############################################################
 
 
-mainlogpath=[/path/to/remote/logs]             #This is the path that the script will search the host for
+mainlogpath=[/path/to/remote/logs]      #This is the path that the script will search the host for
 locallogpath=[/path/to/local/logs]      #Path to the logs on the local machine running the script
 processedlogpath=[/path/to/logs]        #Path to move all the zipped up archives to prevent clutter
 
@@ -39,28 +39,34 @@ function HELP {
   exit
 }
 
+##WORK IN PROGRESS
+# function SETEXT {
+#   # if [ $* =~ "*\-e*" ]; then
+
+# }
+
 function SETPATH {
   if [ -z ${1} ]; then
     #define the path to the zipped up logs
     logz="$mainlogpath/$ticketnumber.tar.gz"   # DO NOT CHANGE
     #define the path the the folder where the zipped logs will go 
     logpath=$mainlogpath/$ticketnumber         # DO NOT CHANGE
-    LOGPULL
   else
     mainlogpath=$1
     #define the path to the zipped up logs
     logz="$mainlogpath/$ticketnumber.tar.gz"   # DO NOT CHANGE
     #define the path the the folder where the zipped logs will go 
     logpath=$mainlogpath/$ticketnumber         # DO NOT CHANGE
-    LOGPULL
   fi
+  # SETEXT
+  LOGPULL
 }
 
 function LOGPULL {
   ssh $user@$host << ENDHERE
 cd $mainlogpath
 mkdir $ticketnumber
-cp *.log $ticketnumber/
+cp *.$extension $ticketnumber/
 tar -cvzf $ticketnumber.tar.gz $ticketnumber
 exit
 ENDHERE
