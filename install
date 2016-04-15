@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script does require sudo since it moves the script
-# that runs lp into the bin folder.
+# that runs lr into the bin folder.
 
 
 RED='\033[0;31m'
@@ -9,11 +9,11 @@ NC='\033[0m'
 GREEN='\033[0;32m'
 
 remotepath=$1
-localpath=$2
+localrath=$2
 processedpath=$3
 
 function INSTALL {
-	cp lp/lp /bin/
+	cp lr/lr /bin/
 	if [ $? == 1 ]; then
 	  echo ""
 	  echo -e "${RED}Please run this script as sudo${NC}"
@@ -21,16 +21,16 @@ function INSTALL {
 	  exit
 	fi
 	echo ""
-	echo -e "${GREEN}lp has been installed${NC}"
+	echo -e "${GREEN}lr has been installed${NC}"
 	echo "Usage:"
-	echo -e "\t lp [user] [host] [ticket]"
+	echo -e "\t lr [user] [host] [ticket]"
 	echo ""	
 }
 
 if [ $# -gt 1 ]; then
-	sed -i -e "s@\[\/path\/to\/remote\/logs\]@$remotepath@g" lp/lp
-	sed -i -e "s@\[\/path\/to\/local\/logs\]@$localpath@g" lp/lp
-	sed -i -e "s@\[\/path\/to\/logs\]@$processedpath@g" lp/lp
+	sed -i -e "s@\[\/path\/to\/remote\/logs\]@$remotepath@g" lr/lr
+	sed -i -e "s@\[\/path\/to\/local\/logs\]@$localpath@g" lr/lr
+	sed -i -e "s@\[\/path\/to\/logs\]@$processedpath@g" lr/lr
 	INSTALL
 else	
 	INSTALL

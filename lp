@@ -30,7 +30,7 @@ processedlogpath=[/path/to/logs]        #Path to move all the zipped up archives
 #function to echo the usage message
 function HELP {
   echo ""
-  echo -e "Usage: lp [user] [host] [ticketnumber]"
+  echo -e "Usage: lr [user] [host] [ticketnumber]"
   echo ""
   echo -e "\tThis command will allow you to specify"
   echo -e "\ta username, host, and ticket number."
