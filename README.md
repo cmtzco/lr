@@ -19,10 +19,14 @@ or
 `sudo ./lp/install` *Be sure to edit the `lp` file if you do not include the log paths in the command*
 
 ##Usage
-> lp username hostname ticketnumber
-> lp username hostname ticketnumber /custom/path/to/search
-> lp username hostname ticketnumber /custom/path/to/search "fileextension"
+`lp username hostname ticketnumber`
+
+`lp username hostname ticketnumber /custom/path/to/search`
+
+`lp username hostname ticketnumber /custom/path/to/search "fileextension"`
+
 *NOTE: The extension and custom path are currently a work in progress since they need to be able to run independent of each other.*
+
 ##Features
 -Pull down all files with a .log extension in a common directory
 
