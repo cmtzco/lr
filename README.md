@@ -1,10 +1,11 @@
 # LP
-###Organized log retrieval
 
-* [INSTALLATION](https://github.com/mrMuffins/lp#organized-log-retrieval)
-* [USAGE](https://github.com/mrMuffins/lp#usage)
-* [FEATURES](https://github.com/mrMuffins/lp#features)
-* [TODO](https://github.com/mrMuffins/lp#todo)
+* [Installation](https://github.com/mrMuffins/lp#organized-log-retrieval)
+* [Usage](https://github.com/mrMuffins/lp#usage)
+* [Features](https://github.com/mrMuffins/lp#features)
+* [Todo](https://github.com/mrMuffins/lp#todo)
+
+###Organized log retrieval
 
 lp is currently used in a helpdesk environment for pulling logs from remote servers and 
 organizing them based on the tickets they relate to.  lp makes it simple to pull down logs 
