@@ -39,11 +39,18 @@ function HELP {
   exit
 }
 
-##WORK IN PROGRESS
-# function SETEXT {
-#   # if [ $* =~ "*\-e*" ]; then
-
-# }
+## WORK IN PROGRESS
+## This needs to be fixed to be sure that this 
+## can be run without setpath
+function SETEXT {
+  # if [ $* =~ "*\-e*" ]; then
+  if [ -z ${1} ]; then
+    extension="log"
+  else
+    extension=$1
+  fi
+  LOGPULL
+}
 
 function SETPATH {
   if [ -z ${1} ]; then
@@ -58,8 +65,11 @@ function SETPATH {
     #define the path the the folder where the zipped logs will go 
     logpath=$mainlogpath/$ticketnumber         # DO NOT CHANGE
   fi
-  # SETEXT
-  LOGPULL
+  if [ -z ${extension} ]; then
+    SETEXT
+  else
+    SETEXT $extension
+  fi
 }
 
 function LOGPULL {
