@@ -63,8 +63,7 @@ mkdir $ticketnumber
 cp *.log $ticketnumber/
 tar -cvzf $ticketnumber.tar.gz $ticketnumber
 exit
-ENDHERE  #whitespace matters -__-
-
+ENDHERE
   #scp pulls down the archive locally then tar extracts the files
   scp $user@$host:$logz $locallogpath
   tar -xzvf $locallogpath/$ticketnumber.tar.gz -C $locallogpath
