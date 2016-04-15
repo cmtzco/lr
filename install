@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 GREEN='\033[0;32m'
 
-cp lp /bin/
+cp lp/lp /bin/
 if [ $? == 1 ]; then
   echo ""
   echo -e "${RED}Please run this script as sudo${NC}"

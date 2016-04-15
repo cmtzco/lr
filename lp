@@ -53,6 +53,7 @@ function SETPATH () {
     #define the path the the folder where the zipped logs will go 
     logpath=$mainlogpath/$ticketnumber         # DO NOT CHANGE
     LOGPULL
+  fi
 }
 
 function LOGPULL () {

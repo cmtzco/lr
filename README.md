@@ -10,6 +10,8 @@ and avoid having to remember the SCP/RSYNC command format.
 
 `git clone https://github.com/mrMuffins/lp`
 
+*NOTE: You will want to edit the `lp` file inside the `lp` directory before you do the install script to make sure that you specify the base directories.  Currently `install` is being worked on to ensure that this can be configured via the script* 
+
 `sudo ./lp/install `
 
 ##Usage
