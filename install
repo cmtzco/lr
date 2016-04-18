@@ -9,7 +9,7 @@ NC='\033[0m'
 GREEN='\033[0;32m'
 
 remotepath=$1
-localrath=$2
+localpath=$2
 processedpath=$3
 
 function INSTALL {
