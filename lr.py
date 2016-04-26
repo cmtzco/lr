@@ -1,5 +1,7 @@
 #!/usr/local/bin//python
 import click
+import subprocess
+import sys
 
 @click.command()
 @click.option('--path', default='/var/log/', help='Path to search remote host for logs')
@@ -16,5 +18,9 @@ def lr(path, local, ext, user, host, foldername):
   click.echo('\tUser: {}'.format(user))
   click.echo('\tHost: {}'.format(host))
   click.echo('\tFolder Name: {}'.format(foldername))
+  ssh = subprocess.Popen(["ssh", "{}\@{}".format(user, host), COMMAND],
+                         shell=False,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
 if __name__ == '__main__':
   lr()
