@@ -3,6 +3,8 @@
 import click
 import subprocess
 import sys
+import pysftp
+import getpass
 
 @click.command()
 @click.option('--path', default='/var/log/', help='Path to search remote host for logs')
@@ -11,6 +13,11 @@ import sys
 @click.argument('user')
 @click.argument('host')
 @click.argument('foldername')
+
+def download(user, hostname):
+  password = getpass.getpass()
+  with pysftp.Connection(hostname, username=user, password=password) as sftp:
+    with sftp.cd  ##left off building sftp function
 def lr(path, local, ext, user, host, foldername):
   """LogRoller allows for organized log downloads"""
   click.echo('\tPath: {}'.format(path))
@@ -36,5 +43,7 @@ def lr(path, local, ext, user, host, foldername):
     print >>sys.stderr, "ERROR: %s" % error
   else:
     print result
+  
+
 if __name__ == '__main__':
   lr()
