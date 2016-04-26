@@ -1,15 +1,16 @@
-!/usr/bin/python
+#!/usr/bin/python
 ###!/usr/local/bin//python  ##USED FOR MAC ONLY
 import click
 import subprocess
 import sys
 import pysftp
 import getpass
+import tarfile
 
 @click.command()
-@click.option('--path', default='/var/log/', help='Path to search remote host for logs. Make sure to end with a /')
-@click.option('--local', default='/home/user/', help='Path to store the logs locally.  Make sure to end with a /')
-@click.option('--ext', default='log', help='Extension of files to pull down from the remote server')
+@click.option('--path', '-p', default='/var/log/', help='Path to search remote host for logs. Make sure to end with a /')
+@click.option('--local', '-l', default='/home/user/', help='Path to store the logs locally.  Make sure to end with a /')
+@click.option('--ext', '-e',default='log', help='Extension of files to pull down from the remote server')
 @click.argument('user')
 @click.argument('host')
 @click.argument('foldername')
@@ -25,7 +26,6 @@ def lr(path, local, ext, user, host, foldername):
     command = 'cd {0} && mkdir {1} && cp *.{2} {1}/ && tar -cvzf {1}.tar.gz {1}'.format(path,
                                                                                         foldername,
                                                                                         ext)
-    click.echo(command)
     ssh = subprocess.Popen(["ssh", "{}@{}".format(user, host), command],
                            shell=False,
                            stdout=subprocess.PIPE,
@@ -38,8 +38,10 @@ def lr(path, local, ext, user, host, foldername):
         print result
         pw  = getpass.getpass()
         sftp = pysftp.Connection(host, username=user, password=pw)
-        sftp.get('{}{}.tar.gz'.format(path, foldername), localpath='{}{}'.format(local, foldername),  preserve_mtime=True)
-
+        sftp.get('{}{}.tar.gz'.format(path, foldername), localpath='{}{}.tar.gz'.format(local, foldername),  preserve_mtime=True)
+        tar = tarfile.open("{}{}.tar.gz".format(local, foldername))
+        tar.extractall(path="{}".format(local))
+        tar.close()
 if __name__ == '__main__':
     lr()
 
