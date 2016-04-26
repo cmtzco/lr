@@ -19,16 +19,22 @@ def lr(path, local, ext, user, host, foldername):
   click.echo('\tUser: {}'.format(user))
   click.echo('\tHost: {}'.format(host))
   click.echo('\tFolder Name: {}'.format(foldername))
-  command = "cd {} && mkdir {} && cp *.{} {}/ && tar -cvzf {}.tar.gz {} && exit".format(path, 
-                                                                                        foldername, 
-                                                                                        ext, 
-                                                                                        foldername, 
-                                                                                        foldername, 
-                                                                                        foldername)
+  command = 'cd {} && mkdir {} && cp *.{} {}/ && tar -cvzf {}.tar.gz {}'.format(path, 
+                                                                                foldername, 
+                                                                                ext, 
+                                                                                foldername, 
+                                                                                foldername, 
+                                                                                foldername)
   click.echo(command)
-  ssh = subprocess.Popen(["ssh", "{}\@{}".format(user, host), command],
+  ssh = subprocess.Popen(["ssh", "{}@{}".format(user, host), command],
                          shell=False,
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
+  result = ssh.stdout.readlines()
+  if result == []:
+    error = ssh.stderr.readlines()
+    print >>sys.stderr, "ERROR: %s" % error
+  else:
+    print result
 if __name__ == '__main__':
   lr()
