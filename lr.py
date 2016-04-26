@@ -1,4 +1,5 @@
-#!/usr/local/bin//python
+#!/usr/bin/python
+###!/usr/local/bin//python  ##USED FOR MAC ONLY
 import click
 import subprocess
 import sys
@@ -18,7 +19,14 @@ def lr(path, local, ext, user, host, foldername):
   click.echo('\tUser: {}'.format(user))
   click.echo('\tHost: {}'.format(host))
   click.echo('\tFolder Name: {}'.format(foldername))
-  ssh = subprocess.Popen(["ssh", "{}\@{}".format(user, host), COMMAND],
+  command = "cd {} && mkdir {} && cp *.{} {}/ && tar -cvzf {}.tar.gz {} && exit".format(path, 
+                                                                                        foldername, 
+                                                                                        ext, 
+                                                                                        foldername, 
+                                                                                        foldername, 
+                                                                                        foldername)
+  click.echo(command)
+  ssh = subprocess.Popen(["ssh", "{}\@{}".format(user, host), command],
                          shell=False,
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
