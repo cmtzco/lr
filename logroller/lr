@@ -1,5 +1,4 @@
-#!/usr/bin/python
-###!/usr/local/bin//python  ##USED FOR MAC ONLY
+##SHEBANG##
 import click
 import subprocess
 import sys
@@ -8,8 +7,8 @@ import getpass
 import tarfile
 
 @click.command()
-@click.option('--path', '-p', default='/var/log/', help='Path to search remote host for logs. Make sure to end with a /')
-@click.option('--local', '-l', default='/home/user/', help='Path to store the logs locally.  Make sure to end with a /')
+@click.option('--path', '-p', default='##REMOTEPATH##', help='Path to search remote host for logs. Make sure to end with a /')
+@click.option('--local', '-l', default='##LOCALPATH##', help='Path to store the logs locally.  Make sure to end with a /')
 @click.option('--ext', '-e',default='log', help='Extension of files to pull down from the remote server')
 @click.argument('user')
 @click.argument('host')

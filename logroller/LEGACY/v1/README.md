@@ -7,7 +7,7 @@
 
 ###Organized log retrieval
 
-lr is currently used in a helpdesk environment for pulling logs from remote servers and 
+lr is currently used in a helrdesk environment for pulling logs from remote servers and 
 organizing them based on the tickets they relate to.  lr makes it simple to pull down logs 
 and avoid having to remember the SCP/RSYNC command format.  
 
