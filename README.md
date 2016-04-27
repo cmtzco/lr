@@ -2,9 +2,9 @@
 
 * [Installation](https://github.com/cmtzco/lr#organized-log-retrieval)
     * [Requirements]()
-    * [Linux]()
-    * [Cygwin]()
-    * [Windows]()
+    * [Linux](https://github.com/cmtzco/lr/tree/lr-py#linux)
+    * [Cygwin](https://github.com/cmtzco/lr/tree/lr-py#cygwin)
+    * [Windows](https://github.com/cmtzco/lr/tree/lr-py#windowscmd)
 * [Usage](https://github.com/cmtzco/lr#usage)
 * [Features](https://github.com/cmtzco/lr#features)
 * [Todo](https://github.com/cmtzco/lr#todo)
@@ -23,16 +23,22 @@ and avoid having to remember the SCP/RSYNC command format.
 
 
 ###Linux
+
 *NOTE: sudo is required as it installs the script in the /bin folder*
+
 `git clone https://github.com/cmtzco/lr`
+
 `sudo python lr/install.py`
+
 Follow the installation questions and Voila! its installed
 
 
 ###Cygwin
-*NOTE: sudo is required as it installs the script in the /bin folder*
+
 `git clone https://github.com/cmtzco/lr`
+
 `python lr/install.py`
+
 Follow the installation questions and Voila! its installed
 
 
