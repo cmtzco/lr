@@ -3,11 +3,7 @@ import sys
 import os
 import fileinput
 
-platform = sys.platform.lower()
-if "nt" in platform:
-    print "Windows based system"
-
-elif "cygwin" in platform:
+def install_nix():
     pythonlocation = subprocess.check_output(["which", "python"], shell=False)
     if "python27" in pythonlocation:
         path = pythonlocation.replace("python27\n", "")
@@ -37,6 +33,12 @@ elif "cygwin" in platform:
     subprocess.call(["cp", installwd, path], shell=False)
     subprocess.call(["pip", "install", "-r", installreq], shell=False)
     print "Successfully installed lr"
+
+
+platform = sys.platform.lower()
+if "nt" in platform:
+    print "Windows based system"
+elif "cygwin" in platform:
+    install_nix()
 elif "linux" in platform: 
-    print "Linux based system"
-    subprocess.check_call("ls", shell=False) 
+    install_nix()
