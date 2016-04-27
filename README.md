@@ -22,7 +22,9 @@ and avoid having to remember the SCP/RSYNC command format.
 * Pip
 
 
-###Linux
+###Linux 
+
+(Currently working on this as PIP will not install PySFTP)
 
 *NOTE: sudo is required as it installs the script in the /bin folder*
 
