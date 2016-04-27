@@ -14,9 +14,9 @@ extension=$5      #DO NOT EDIT
 ##############################################################
 
 
-mainlogpath=[/path/to/remote/logs]      #This is the path that the script will search the host for
-locallogpath=[/path/to/local/logs]      #Path to the logs on the local machine running the script
-processedlogpath=[/path/to/logs]        #Path to move all the zipped up archives to prevent clutter
+mainlogpath=/opt/reddwerks/logs      #This is the path that the script will search the host for
+locallogpath=/home/reddwerks/logs      #Path to the logs on the local machine running the script
+processedlogpath=/home/reddwerks/processed        #Path to move all the zipped up archives to prevent clutter
 
 
 ##############################################################
