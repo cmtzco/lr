@@ -1,6 +1,10 @@
 # LR
 
 * [Installation](https://github.com/cmtzco/lr#organized-log-retrieval)
+    * [Requirements]()
+    * [Linux]()
+    * [Cygwin]()
+    * [Windows]()
 * [Usage](https://github.com/cmtzco/lr#usage)
 * [Features](https://github.com/cmtzco/lr#features)
 * [Todo](https://github.com/cmtzco/lr#todo)
@@ -12,26 +16,36 @@ organizing them based on the tickets they relate to.  lr makes it simple to pull
 and avoid having to remember the SCP/RSYNC command format.  
 
 ##Installation
+
+###Requirements
+* Python (2.7)
+* Pip
+
+
+###Linux
 *NOTE: sudo is required as it installs the script in the /bin folder*
-
 `git clone https://github.com/cmtzco/lr`
+`sudo python lr/install.py`
+Follow the installation questions and Voila! its installed
 
-*NOTE: You will want to edit the `lr` file inside the `lr` directory before you do the install script to make sure that you specify the base directories.  Currently `install` is being worked on to ensure that this can be configured via the script* 
 
-`sudo ./lr/install [remote log path] [local log path] [processed log path]` *Specify the paths in the command*
+###Cygwin
+*NOTE: sudo is required as it installs the script in the /bin folder*
+`git clone https://github.com/cmtzco/lr`
+`python lr/install.py`
+Follow the installation questions and Voila! its installed
 
-or
 
-`sudo ./lr/install` *Be sure to edit the `lr` file if you do not include the log paths in the command*
+###Windows(CMD)
+####WORK IN PROGRESS
+
 
 ##Usage
-`lr username hostname ticketnumber`
-
-`lr username hostname ticketnumber /custom/path/to/search`
-
-`lr username hostname ticketnumber /custom/path/to/search "fileextension"`
-
-*NOTE: The extension and custom path are currently a work in progress since they need to be able to run independent of each other.*
+`lr [OPTIONS] user host foldername`
+* Options
+    * -p or --path to specify a different remote path to crawl 
+    * -l or --local to specify a different local path to save the logs to
+    * -e or --ext to specify the file extension to search for
 
 ##Features
 -Pull down all files with a .log extension in a common directory
@@ -44,7 +58,7 @@ or
 
 
 ##TODO
-- [] Specify the extension of the files to look for.
+- [X] Specify the extension of the files to look for.
 - [] Scrape all logs on the server
 - [] Pull from multiple servers
 
