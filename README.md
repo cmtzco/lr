@@ -35,7 +35,7 @@ and avoid having to remember the SCP/RSYNC command format.
 Follow the installation questions and Voila! its installed
 
 
-###Cygwin
+###Cygwin/[Babun](http://babun.github.io/)
 
 `git clone https://github.com/cmtzco/lr`
 

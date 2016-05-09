@@ -26,7 +26,7 @@ def install_nix():
     localpath = raw_input("Specify the absolute local path that lr will store the logs in: (ex. /home/username/) ")
     if localpath[-1:] != "/":
         print "Path must end with slash (ex. /home/username/)"
-        remotepath = raw_input("Specify the absolute remote path that lr will search by default: (ex. /var/log/) ")
+        remotepath = raw_input("Specify the absolute remote path that lr will search by default: (ex. /home/username/) ")
     else:
         sed = "s@\#\#LOCALPATH\#\#@{}@g".format(localpath.replace("\n", ""))
         subprocess.call(["sed", "-i", "-e", sed, installwd], shell=False)
@@ -38,6 +38,7 @@ def install_nix():
 platform = sys.platform.lower()
 if "nt" in platform:
     print "Windows based system"
+    print "Installer is currently in development, Cygwin/Babun are great alternatives in the mean time."
 elif "cygwin" in platform:
     install_nix()
 elif "linux" in platform: 
